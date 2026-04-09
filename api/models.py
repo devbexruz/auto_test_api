@@ -23,6 +23,7 @@ class Theme(models.Model):
 
     def __str__(self):
         return self.name
+
 class Ticket(models.Model):
     name = models.CharField(max_length=100)
 
@@ -101,6 +102,7 @@ class Result(models.Model):
     end_time = models.DateTimeField(null=True, blank=True)
     def __str__(self):
         return f"{self.description} - {self.user.username}"
+
 class TestSheet(models.Model):
     result = models.ForeignKey(Result, on_delete=models.CASCADE)
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
@@ -128,8 +130,6 @@ class UserSession(models.Model):
 
     def __str__(self):
         return f"{self.user.username} -> {self.token}"
-
-
 
 class Data(models.Model):
     key = models.CharField(max_length=100, unique=True)
